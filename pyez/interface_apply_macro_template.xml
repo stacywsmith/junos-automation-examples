@@ -1,0 +1,24 @@
+<configuration>
+    <interfaces>
+    {% for key, value in lldp.items() %}
+        <interface>
+            <name>{{ key }}</name>
+            <apply-macro>
+                <name>LLDP</name>
+                <data>
+                    <name>system</name>
+                    <value>{{ value['system'] }}</value>
+                </data>
+                <data>
+                    <name>port</name>
+                    <value>{{ value['port'] }}</value>
+                </data>
+                <data>
+                    <name>state</name>
+                    <value>{{ value['state'] }}</value>
+                </data>
+            </apply-macro>
+        </interface>
+    {% endfor %}
+    </interfaces>
+</configuration>
